@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprendimiento Tecnológico - Sílabo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .university-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .university-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .course-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .course-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #555;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .unit-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .unit-card:hover {
+            transform: scale(1.05);
+        }
+
+        .unit-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .unit-topics {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .unit-topics li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .unit-topics li:last-child {
+            border-bottom: none;
+        }
+
+        .evaluation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .evaluation-table th,
+        .evaluation-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .evaluation-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        .evaluation-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .evaluation-table tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        .professor-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .professor-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .methodology-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .methodology-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .course-title {
+                font-size: 2rem;
+            }
+            
+            .course-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="university-logo">
+                <div class="university-name">Pontificia Universidad Católica del Ecuador</div>
+                <div style="color: #666; font-size: 1.1rem;">Facultad de Ingeniería - Sistemas de Información</div>
+            </div>
+            <div class="course-title">Emprendimiento Tecnológico</div>
+            
+            <div class="course-info">
+                <div class="info-card">
+                    <div class="info-label">Código:</div>
+                    <div class="info-value">06 Q0158</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Modalidad:</div>
+                    <div class="info-value">Teórico</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Nivel:</div>
+                    <div class="info-value">65 Grado</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Horas Semanales:</div>
+                    <div class="info-value">3 horas</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Período:</div>
+                    <div class="info-value">202561 - Primer P. Ord. 2025</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">Sede:</div>
+                    <div class="info-value">Quito</div>
+                </div>
+            </div>
+
+            <div class="professor-info">
+                <div class="professor-name">👨‍🏫 Francisco Rodríguez Clavijo</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>frodriguez@puce.edu.ec</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>022495676</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">📋</div>
+                Descripción del Curso
+            </div>
+            <div class="description">
+                En la asignatura Emprendimiento Tecnológico se fusionan conceptos como emprendimiento, innovación, plan de negocio, uso de varias metodologías para encontrar y mejorar una idea de negocio. Conoceremos las tendencias de negocios en el área digital y tecnológica, estaremos en la capacidad de identificar las oportunidades de negocios en relación a la tecnología, aplicar metodologías innovadoras para el desarrollo de modelos de negocios, elaboraremos análisis DAFO de proyectos, así como formas de competir en el mercado, crear valor, manejar herramientas digitales para las actividades de marketing, crear una empresa en base a los requerimientos jurídicos específicos de los negocios digitales.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🎯</div>
+                Objetivo General
+            </div>
+            <div class="description">
+                Brindar las bases conceptuales (contenidos y herramientas necesarias para abordar un proyecto empresarial de carácter tecnológico y transformarlo en una realidad), proporcionando una visión integral del proceso emprendedor en el campo de la tecnología.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">📚</div>
+                Contenido del Curso
+            </div>
+            
+            <div class="units-grid">
+                <div class="unit-card">
+                    <div class="unit-title">Unidad 1: Emprendimiento y Oportunidad del Negocio</div>
+                    <ul class="unit-topics">
+                        <li>• Emprendimiento Tecnológico, concepto de emprendedor</li>
+                        <li>• Modalidades del emprendimiento</li>
+                        <li>• La planificación del proceso emprendedor</li>
+                        <li>• Identificación y evaluación de la oportunidad de negocio</li>
+                        <li>• La idea de negocio</li>
+                        <li>• Alternativas de inversión y emprendimiento en el área digital</li>
+                    </ul>
+                </div>
+
+                <div class="unit-card">
+                    <div class="unit-title">Unidad 2: Las Ideas de Negocio Innovadoras</div>
+                    <ul class="unit-topics">
+                        <li>• Creatividad e Innovación</li>
+                        <li>• Propuesta de valor</li>
+                        <li>• Design Thinking</li>
+                        <li>• Análisis de viabilidad de una idea de negocio</li>
+                        <li>• Casos de éxitos en Negocios digitales y tecnológicos</li>
+                    </ul>
+                </div>
+
+                <div class="unit-card">
+                    <div class="unit-title">Unidad 3: Configuración y Desarrollo de un Modelo de Negocios</div>
+                    <ul class="unit-topics">
+                        <li>• Modelo de Negocio Business Model Canvas</li>
+                        <li>• Lean Startup</li>
+                        <li>• Plan de negocios: Diseño, estructura y finalidad</li>
+                        <li>• Análisis estratégico</li>
+                        <li>• Análisis del entorno sectorial</li>
+                        <li>• Análisis interno y DAFO</li>
+                        <li>• Creación de valor y factores diferenciadores</li>
+                        <li>• Estrategia competitiva</li>
+                        <li>• Plan de Marketing, Operaciones y Económico Financiero</li>
+                    </ul>
+                </div>
+
+                <div class="unit-card">
+                    <div class="unit-title">Unidad 4: Aspectos Jurídicos</div>
+                    <ul class="unit-topics">
+                        <li>• Requisitos legales para establecimiento de empresas tecnológicas</li>
+                        <li>• Requisitos Fiscales</li>
+                    </ul>
+                </div>
+
+                <div class="unit-card">
+                    <div class="unit-title">Unidad 5: Prototipo de Negocio</div>
+                    <ul class="unit-topics">
+                        <li>• Prototipo Innovador</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">📊</div>
+                Sistema de Evaluación
+            </div>
+            
+            <table class="evaluation-table">
+                <thead>
+                    <tr>
+                        <th>Evaluación</th>
+                        <th>Fecha</th>
+                        <th>Calificación</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Primer Parcial</strong></td>
+                        <td>2 de mayo, 2025</td>
+                        <td>/50</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Segundo Parcial</strong></td>
+                        <td>6 de junio, 2025</td>
+                        <td>/50</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tercer Parcial</strong></td>
+                        <td>11 de julio, 2025</td>
+                        <td>/50</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Evaluación Final</strong></td>
+                        <td>27 de julio, 2025</td>
+                        <td>/50</td>
+                        <td>25%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🎓</div>
+                Resultados de Aprendizaje
+            </div>
+            
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <div class="methodology-title">Q211-035</div>
+                    <div>Aplica metodologías de emprendimiento e innovación en el desarrollo de proyectos tecnológicos</div>
+                </div>
+                <div class="methodology-card">
+                    <div class="methodology-title">Q211-036</div>
+                    <div>Elabora un plan de negocio para dar inicio a una empresa de base tecnológica</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🔧</div>
+                Metodología
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-button active" onclick="showTab('teaching')">Estrategias Didácticas</button>
+                <button class="tab-button" onclick="showTab('evaluation')">Métodos de Evaluación</button>
+            </div>
+
+            <div id="teaching" class="tab-content active">
+                <div class="methodology-grid">
+                    <div class="methodology-card">
+                        <div class="methodology-title">Gamificación</div>
+                        <div>Uso de elementos de juego para motivar el aprendizaje</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Estudio de Casos</div>
+                        <div>Análisis de casos reales de emprendimiento tecnológico</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Aprendizaje Servicio</div>
+                        <div>Proyectos que combinan aprendizaje con servicio a la comunidad</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Clase Magistral</div>
+                        <div>Exposiciones teóricas fundamentales</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="evaluation" class="tab-content">
+                <div class="methodology-grid">
+                    <div class="methodology-card">
+                        <div class="methodology-title">Pruebas</div>
+                        <div>Evaluaciones escritas de conocimientos teóricos</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Exposiciones</div>
+                        <div>Presentaciones orales de proyectos y casos</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Trabajos Grupales</div>
+                        <div>Proyectos colaborativos en equipo</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Diarios de Reflexión</div>
+                        <div>Reflexiones escritas sobre el proceso de aprendizaje</div>
+                    </div>
+                    <div class="methodology-card">
+                        <div class="methodology-title">Foros</div>
+                        <div>Participación en discusiones académicas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">📖</div>
+                Bibliografía
+            </div>
+            
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <div class="methodology-title">Bibliografía Básica</div>
+                    <div>
+                        <p><strong>Secretos De Emprendimiento Que Enseña Carolina Herrera.</strong><br>
+                        Debates IESA ORTIZ, A. 2017</p>
+                        <p><strong>Plan, Execute, Win!</strong><br>
+                        John Wiley & Sons, Incorporated. Stroh, Patrick J. 2014</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <div class="section-icon">🕒</div>
+                Tutoría Académica
+            </div>
+            <div class="description">
+                <p><strong>Tutoría Grupal:</strong> Previo acuerdo con los estudiantes.</p>
+                <p><strong>Tutoría Individual:</strong> En el horario de atención al estudiante que se detalla en los Datos Académicos.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Ocultar todas las tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Mostrar la tab seleccionada
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+        }
+
+        // Efecto de hover en las cards
+        document.querySelectorAll('.unit-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotateY(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotateY(0deg)';
+            });
+        });
+
+        // Animación de aparición progresiva
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
